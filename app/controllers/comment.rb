@@ -12,7 +12,7 @@ post '/comment/:receiver_id/new' do |receiver_id|
   @comment.sender_id = session[:user_id]
   @comment.save
   @receiver_comments << @comment
-  erb :'comment/all'
+  redirect to("/user/#{params[:receiver_id]}")
 end
 
 
