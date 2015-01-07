@@ -1,7 +1,15 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('loginLink').on('click', '.loginForm', function(event){
+    event.preventDefault();
+    console.log(event.target);
+    $form = $(event.target);
+    $ajax({
+      type: $form.attr('method')
+      url: $form.attr('action')
+      data: $form.serialize()
+    }).done(function(response) {
+      $form.
+    })
+    })
+  })
 });
