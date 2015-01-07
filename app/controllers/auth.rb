@@ -30,3 +30,13 @@ get '/logout' do
   session[:user_id] = nil
   redirect '/'
 end
+
+get '/user/:id' do |id|
+  protected!
+  @page_owner = User.find(id)
+  if id.to_i == session[:user_id]
+    erb :'/user/profile'
+  else
+    erb :'/login'
+  end
+end
