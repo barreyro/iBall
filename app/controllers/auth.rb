@@ -8,6 +8,6 @@ post '/signup' do
     session[:user_id] = user.id
     redirect '/'
   else
-    redirect '/user/signup'
+    redirect '/signup'
   end
 end
