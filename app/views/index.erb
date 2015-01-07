@@ -1,8 +1,9 @@
 <div class="container">
   <h1>Hello iBallers!</h1>
   <% if current_user %>
-  <% @users.each do |user|  %>
-  <a href="/user/<%= user.id %>"> <%= user.username %></a> </br>
-  <% end %>
+    <h2>welcome back <%=current_user.username %> </h2></br>
+    <% @users.each do |user|  %>
+    <a href="/user/<%= user.id %>"> <%= user.username %></a> </br>
+    <% end %>
   <% end %>
 </div>
