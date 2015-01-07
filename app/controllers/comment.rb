@@ -29,3 +29,10 @@ post '/comment/:comment_id' do
   end
 end
 
+delete '/comment/:comment_id' do
+  comment = Comment.find(params[:comment_id])
+  user = comment.receiver_id
+  comment.destroy
+  redirect to("/user/#{user}")
+end
+
