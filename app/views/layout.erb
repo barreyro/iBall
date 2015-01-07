@@ -18,12 +18,9 @@
   <title></title>
 </head>
 <body>
-  <% if current_user %>
-    <a href='/'>Home</a>
-    <div class="logoutLink"> <a href='/logout'>Log Out </a></div>
-  <% else %>
-      <div class="loginLink"><a href='/login'>Log In</a></div> <div class="signupLink"><a href='/signup'> Sign Up </a></div>
-  <% end %>
+  <div id="container">
+    <%= erb :nav_bar %>
+  </div>
   <%= yield %>
 </body>
 </html>

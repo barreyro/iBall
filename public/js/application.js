@@ -1,15 +1,23 @@
 $(document).ready(function() {
-  $('loginLink').on('click', '.loginForm', function(event){
+  $("body").on("click", "#signup", function(event){
     event.preventDefault();
-    console.log(event.target);
-    $form = $(event.target);
-    $ajax({
-      type: $form.attr('method')
-      url: $form.attr('action')
-      data: $form.serialize()
-    }).done(function(response) {
-      $form.
+    $target = $(event.target);
+    $.ajax({
+      type: "GET",
+      url: "/signup",
+    }).done(function(response){
+      $(".container").replaceWith(response);
     })
+  })
+
+  $("body").on("click", "#login", function(event){
+    event.preventDefault();
+    $target = $(event.target);
+    $.ajax({
+      type: "GET",
+      url: "/",
+    }).done(function(response){
+      $(".container").replaceWith(response);
     })
   })
 });
