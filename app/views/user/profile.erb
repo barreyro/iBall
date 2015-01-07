@@ -7,3 +7,12 @@
   <%=@page_owner.height %> </br>
   <%=@page_owner.bio %> </br>
 </p>
+
+<div class="userComments">
+  Add a comment for <%= @page_owner.username %>
+  <form action="/comment/<%=@page_owner.id%>/new" method = "POST">
+  <input type="text" name="comment[content]">
+  <input type="submit">
+</form>
+
+</div>
