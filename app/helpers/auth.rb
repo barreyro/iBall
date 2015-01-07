@@ -7,5 +7,5 @@ def current_user
 end
 
 def protected!
-  redirect('/') unless current_user
+  redirect('/login') unless current_user
 end
