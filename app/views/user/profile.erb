@@ -22,6 +22,12 @@
     <% if @page_owner.id == x.receiver_id %>
     <%= x.sender_id%> said:
     <%= x.content %></br>
+    <div class="updateLinks">
+      <% if x.sender_id == current_user.id %>
+       <a href="/comment/<%=x.id%>/edit">Edit/Delete</a>
+      </br>
+      <%end %>
+    </div></br>
   <% end %>
   <% end %>
 </div>
