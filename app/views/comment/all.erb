@@ -1,0 +1,9 @@
+<% @receiver_comments << @comment %>
+<% @allComments.each do |x| %>
+  <% if @comment.receiver_id == x.receiver_id %>
+  <%= x.sender_id%> said:
+  <%= x.content %></br>
+<% end %>
+<% end %>
+
+
