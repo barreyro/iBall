@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   $("body").on("click", "#login", function(event){
     event.preventDefault();
-    $target = $(event.target);
+    var $target = $(event.target);
     $.ajax({
       type: "GET",
       url: "/",
@@ -22,10 +22,10 @@ $(document).ready(function() {
   })
 
   $(".edit_comment_link").click(function(event){
+    var $this = $(this)
     event.preventDefault();
-    $target = $(event.target);
-    $target.hide();
-    $(".edit_form_div").css('display','block');
+    $this.hide();
+    $this.siblings(".edit_form_div").css('display','block');
   })
 
   $(".add_comment_button").click(function(event){
