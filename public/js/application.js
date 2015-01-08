@@ -20,4 +20,25 @@ $(document).ready(function() {
       $(".container").replaceWith(response);
     })
   })
+
+  $(".edit_comment_link").click(function(event){
+    event.preventDefault();
+    $target = $(event.target);
+    $target.hide();
+    $(".edit_form_div").css('display','block');
+  })
+
+  $(".edit_comment_link").on("submit", function(event){
+  event.preventDefault();
+  $target = $(event.target);
+  $.ajax({
+     url: $target.attr("action"),
+     type: "PUT",
+     data: $target.serialize()
+  }).done(function(response){
+    $("html").html(response)
+  })
+  })
+
+
 });

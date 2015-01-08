@@ -19,7 +19,7 @@ get '/comment/:comment_id/edit' do
   erb :'/comment/update'
 end
 
-post '/comment/:comment_id' do
+put '/comment/:comment_id' do
   comment = Comment.find(params[:comment_id])
   user = comment.receiver_id
   if comment.update(params[:comment])

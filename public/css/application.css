@@ -2,3 +2,6 @@ body {
   background-color: beige;
 }
 
+.edit_form_div {
+  display: none;
+}

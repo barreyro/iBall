@@ -1,11 +1,19 @@
-<form class="updateForm"action="/comment/<%= @comment.id %>" method="POST">
-  <input type="hidden" name="_hidden" value= "PUT">
-  <input name="comment[content]" type="text" value="<%= @comment.content %>"><br>
-  <input type="submit" value="Submit">
-</form>
+<% if @comment.sender_id == current_user.id %>
+  <a href="/comment/<%=@comment.id%>/edit" class="edit_comment_link"> Edit </a>
+  <div class = "edit_form_div">
 
-<form class="deleteForm" action="/comment/<%=@comment.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete">
-</form>
+  <form action="/comment/<%= @comment.id %>" method="POST" class="update_form">
+    <input type="hidden" name="_method" value= "PUT">
+    <input name="comment[content]" type="text" value="<%= @comment.content %>"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <form class="delete_form" action="/comment/<%=@comment.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
+  </div>
+
+
+<% end %>
 

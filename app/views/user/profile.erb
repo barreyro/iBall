@@ -23,14 +23,13 @@
 <h3> <%=@page_owner.username %>'s Comments </h3>
 <div class="userComments">
   <% Comment.all.each do |x| %>
+  <% @comment = x %>
     <% if @page_owner.id == x.receiver_id %>
     <%= x.sender_id%> said:
     <%= x.content %></br>
     <div class="updateLinks">
-      <% if x.sender_id == current_user.id %>
-       <a href="/comment/<%=x.id%>/edit">Edit/Delete</a>
+      <%= erb :'/comment/update' %>
       </br>
-      <%end %>
     </div></br>
   <% end %>
   <% end %>
