@@ -34,13 +34,13 @@ end
 get '/user/:id' do |id|
   @all_comments = []
   if current_user
-  user_comments = Comment.all.each do |x|
-    if x.receiver_id == current_user.id
-      @all_comments << x
+    user_comments = Comment.all.each do |x|
+      if x.receiver_id == current_user.id
+        @all_comments << x
+      end
     end
-  end
-end
   protected!
   @page_owner = User.find(id)
   erb :'/user/profile'
+  end
 end
