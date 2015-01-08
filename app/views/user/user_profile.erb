@@ -1,6 +1,13 @@
 <div class= "container">
   <h2> iBallers </h2>
-  <% @users.each do |user|  %>
-    <a href="/user/<%= user.id %>"> <%= user.username %></a> </br>
-  <% end %>
+  <div class="random_users"
+    <% @users.map do |user|  %>
+      <% if Friendship.find_by(friendee_id: current_user.id, friend_id: user.id ) == nil  %>
+          <div class="add_user_link">
+          <a href="/user/<%= user.id %>"> <%= user.username %> </a> </br>
+          <form id="add_user_form" method="post" action="/addfriend/<%= user.id %>"> <input type="hidden" name="_method" value="post"> <div class="submit"><input type="submit" value="Friend"></div> </br></br></form>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
