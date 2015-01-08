@@ -35,5 +35,16 @@ $(document).ready(function() {
     $(".comment_form").css('display','block');
   })
 
+  $(document).on('submit', '.comment_form', function(event) {
+    event.preventDefault()
+    $target = $(event.target)
+    $.ajax({
+      type: "POST",
+      url: $target.attr('action'),
+      data:  $target.serialize()
+    }).done(function(response){
+      $(".userComments").append(response);
+    })
+  })
 
 });

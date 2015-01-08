@@ -1,5 +1,6 @@
-   <div class= "container">
-    <% @users.each do |user|  %>
-      <a href="/user/<%= user.id %>"> <%= user.username %></a> </br>
-    <% end %>
-  </div>
+<div class= "container">
+  <h2> iBallers </h2>
+  <% @users.each do |user|  %>
+    <a href="/user/<%= user.id %>"> <%= user.username %></a> </br>
+  <% end %>
+</div>
