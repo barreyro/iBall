@@ -1,23 +1,21 @@
-<div class="container">
-  <% if current_user %>
+<% if current_user %>
     <%= erb :'/user/user_profile' %>
-
-
-  <%else %>
-  <div class="box">
+<%else %>
+  <div class="nav_bar">
     Login | <a href="/signup" id="signup">Signup</a><br><br>
     <form action="/login" method="POST">
-
-
-    email:
-    <input type="text" name="user[email]">
-   <span> Password:</span>
-    <input type="password" name="user[password]">
+  </div>
+  <div class="container">
+    <font color="black">email:</br>
+    <input type="text" name="user[email]"></br></br>
+    Password:</br>
+    <input type="password" name="user[password]"> </br>
+    <br><Br>
     <input type="submit" value="Login!" id="button">
     </form>
-    <%end %>
+<%end %>
   </div>
-</div>
+
 
 
 

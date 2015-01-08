@@ -3,43 +3,42 @@
   <% if current_user %>
   <a href="/logout" id="logout">Logout</a>
   <%else%>
-  <a href="/" id="login">Login</a>| Signup<br><br>
-
+  <font color="black">
   <form id="sign-up" method="post" action="/signup">
-    <label class="label" for="username">ballername</label>
+    <label class="label" for="username">ballername:</label>
       <input type="text" name="user[username]" placeholder="ex. Swaggy P">
     <br>
 
-    <label class="label" for="email">E-mail</label>
+    <label class="label" for="email">e-mail:</label>
       <input type="email" name="user[email]" placeholder="ex. b@bird.com">
     <br>
 
-    <label class="label" for="password">Password</label>
+    <label class="label" for="password">password:</label>
       <input type="password" name="user[password]" placeholder="password">
     <br>
 
-    <label class="label" for="first_name">First Name</label>
+    <label class="label" for="first_name">first name:</label>
       <input type="text" name="user[first_name]" placeholder="Nick">
     <br>
 
-    <label class="label" for="last_name">Last Name</label>
+    <label class="label" for="last_name">last name:</label>
       <input type="text" name="user[last_name]" placeholder="Young">
     <br>
 
-    <label class="label" for="age">age</label>
+    <label class="label" for="age">age:</label>
       <input type="text" name="user[age]" placeholder="29">
     <br>
 
-    <label class="label" for="height">Height</label>
+    <label class="label" for="height">height: </label>
       <input type="text" name="user[height]" placeholder="79">
     <br>
 
-    <label class="label" for="gender">Gender</label>
+    <label class="label" for="gender">gender:</label>
       <input type="text" name="user[gender]" placeholder="dude">
     <br>
 
-    <label class="label" for="bio">Bio</label>
-      <input type="text" name="user[bio]" placeholder="Lakers all day, everyday.">
+    <label class="label" for="bio">bio:</label>
+      <input type="text" name="user[bio]" placeholder="LAKERS ftw">
     <br>
 
     <div class="submit"><input type="submit" value="Sign Up"></div>

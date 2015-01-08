@@ -1,5 +1,10 @@
 body {
   background-color: beige;
+  background: url('https://ununsplash.imgix.net/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?q=75&fm=jpg&s=885ca6be349e07eacd820b8f585c355f');
+  background-size: 100%;
+  color: white;
+  font-family: 'Rokkitt', serif;
+  font-size: 24pt;
 }
 
 .edit_form_div {
@@ -9,3 +14,38 @@ body {
 .comment_form {
   display: none;
 }
+
+a:visited {
+  color: #B22A29;
+}
+a {
+  color: #B22A29;
+}
+
+.container {
+
+}
+
+.nav_bar {
+  text-align: right;
+  padding-right: 50px;
+  padding-top: 10px;
+}
+.box {
+  text-align: right;
+  padding-right: 50px;
+  padding-top: 10px;
+}
+
+.container {
+  background-color: beige;
+  width: 700px;
+  border: 3px solid black;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  align: center;
+  margin-left: 200px;
+  text-align: center;
+}
+
+

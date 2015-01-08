@@ -1,5 +1,6 @@
-<div class="box">
+<div class="nav_bar">
   <% if current_user %>
-    Welcome: <%= current_user.username %> | <a href='/logout'>Logout</a><br><br>
+    Welcome: <a href='/'> <%= current_user.username %> </a> | <a href='/logout'>Logout</a><br><br>
+  <% else %>
   <% end %>
 </div>

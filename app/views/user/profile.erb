@@ -2,10 +2,12 @@
 </h1>
 
 <p class="userProfile">
-  <%=@page_owner.first_name %> <%=@page_owner.last_name %> </br>
-  <%=@page_owner.age %> </br>
-  <%=@page_owner.height %> </br>
-  <%=@page_owner.bio %> </br>
+  <ul>
+  <li>Real name: <%=@page_owner.first_name %> <%=@page_owner.last_name %> </br></li>
+  <li>Age: <%=@page_owner.age %> </br></li>
+  <li>Height: <%=@page_owner.height %> </br></li>
+  <li>Bio: <%=@page_owner.bio %> </li> </br>
+</ul>
 </p>
 
 <div class="new_comment">
