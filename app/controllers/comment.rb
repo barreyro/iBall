@@ -1,6 +1,6 @@
 get '/comment/:id/new' do
   protected!
-  @receiver = User.find(id)
+  @receiver = User.find(params[:id])
   erb :'comment/new'
 end
 
@@ -11,7 +11,8 @@ post '/comment/:receiver_id/new' do |receiver_id|
   @comment.sender_id = session[:user_id]
   @comment.save
   @receiver_comments << @comment
-  redirect to("/user/#{params[:receiver_id]}")
+
+  erb :'/comment/all', locals: {comments: Comment.all, page_owner: params[:receiver_id].to_i}, layout: false
 end
 
 get '/comment/:comment_id/edit' do

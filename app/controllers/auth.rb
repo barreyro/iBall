@@ -32,6 +32,12 @@ get '/logout' do
 end
 
 get '/user/:id' do |id|
+  @all_comments = []
+  user_comments = Comment.all.each do |x|
+    if x.receiver_id == current_user.id
+      @all_comments << x
+    end
+  end
   protected!
   @page_owner = User.find(id)
   erb :'/user/profile'

@@ -10,29 +10,21 @@
 </ul>
 </p>
 
+<h3> <%=@page_owner.username %>'s Comments </h3>
+
 <div class="new_comment">
   <input type="button" class="add_comment_button" value="Leave a comment">
 </div>
 
-
-<div class="comment_form">
-  <form action="/comment/<%=@page_owner.id%>/new" method = "POST">
-  <input type="text" name="comment[content]">
-  <input type="submit">
-  </form> </br>
+<div id="comment_block">
+  <div class="comment_form">
+    <form action="/comment/<%=@page_owner.id%>/new" method = "POST">
+    <input type="text" name="comment[content]">
+    <input type="submit">
+    </form>
+  </div>
+  <div class="userComments">
+    <%= erb :'/comment/all', locals: {comments: @all_comments, page_owner: @page_owner}, layout: false %>
+  </div>
 </div>
 
-<h3> <%=@page_owner.username %>'s Comments </h3>
-<div class="userComments">
-  <% Comment.all.each do |x| %>
-  <% @comment = x %>
-    <% if @page_owner.id == x.receiver_id %>
-    <%= x.sender_id%> said:
-    <%= x.content %></br>
-    <div class="updateLinks">
-      <%= erb :'/comment/update' %>
-      </br>
-    </div></br>
-  <% end %>
-  <% end %>
-</div>

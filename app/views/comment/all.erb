@@ -1,9 +1,16 @@
-<% @receiver_comments << @comment %>
-<% @allComments.each do |x| %>
-  <% if @comment.receiver_id == x.receiver_id %>
-  <%= x.sender_id%> said:
-  <%= x.content %></br>
-<% end %>
+
+<% comments.each do |comment| %>
+  <div class="comment_div">
+    <%= comment.sender_id%> said:
+    <%= comment.content %></br>
+    <% if comment.sender_id == current_user.id %>
+      <div class="updateLinks">
+      <%= erb :'/comment/update', locals: {comment: comment}, layout: false %></br>
+      </div></br>
+  <% end %>
+</div>
 <% end %>
 
 
+
+wait

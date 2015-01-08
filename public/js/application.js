@@ -35,15 +35,17 @@ $(document).ready(function() {
     $(".comment_form").css('display','block');
   })
 
-  $(document).on('submit', '.comment_form', function(event) {
+ $('#comment_block').on('submit', '.comment_form form', function(event) {
     event.preventDefault()
-    $target = $(event.target)
+    $form = $(this)
+    console.log($form)
     $.ajax({
       type: "POST",
-      url: $target.attr('action'),
-      data:  $target.serialize()
+      url: $form.attr('action'),
+      data:  $form.serialize()
     }).done(function(response){
-      $(".userComments").append(response);
+      console.log(response);
+      $('.userComments').append(response);
     })
   })
 
