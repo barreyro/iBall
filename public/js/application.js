@@ -22,7 +22,7 @@ $(document).ready(function() {
   });
 
   $(".edit_comment_link").click(function(event){
-    var $this = $(this)
+    var $this = $(this);
     event.preventDefault();
     $this.hide();
     $this.siblings(".edit_form_div").css('display','block');
@@ -36,9 +36,9 @@ $(document).ready(function() {
   });
 
  $('#comment_block').on('submit', '.comment_form form', function(event) {
-    event.preventDefault()
-    var $form = $(this)
-    console.log($form)
+    event.preventDefault();
+    var $form = $(this);
+    console.log($form);
     $.ajax({
       type: "POST",
       url: $form.attr('action'),

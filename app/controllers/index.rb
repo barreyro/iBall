@@ -1,5 +1,5 @@
 get '/' do
   @users = User.all
-  @friendships
+  @friendships = Friendship.all
   erb :index
 end
