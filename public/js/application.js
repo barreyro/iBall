@@ -28,16 +28,11 @@ $(document).ready(function() {
     $(".edit_form_div").css('display','block');
   })
 
-  $(".edit_comment_link").on("submit", function(event){
-  event.preventDefault();
-  $target = $(event.target);
-  $.ajax({
-     url: $target.attr("action"),
-     type: "PUT",
-     data: $target.serialize()
-  }).done(function(response){
-    $("html").html(response)
-  })
+  $(".add_comment_button").click(function(event){
+    event.preventDefault();
+    $target = $(event.target);
+    $target.hide();
+    $(".comment_form").css('display','block');
   })
 
 

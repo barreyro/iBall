@@ -5,3 +5,7 @@ body {
 .edit_form_div {
   display: none;
 }
+
+.comment_form {
+  display: none;
+}
