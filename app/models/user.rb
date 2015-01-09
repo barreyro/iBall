@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
 
   has_many :friendships, :foreign_key => 'friendee'
   has_many :friendships, :foreign_key => 'friend'
+
+  has_many :comments
 end

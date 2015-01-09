@@ -5,49 +5,41 @@
   <% friendee_arr = [] %>
   <% friendship_arr = [] %>
   <% matches_arr = [] %>
-  <% @friendships.each do |friend| %>
-    <% if friend.friendee_id == @user_id %>
-      <% friendee_arr << friend.id %>
-    <% end %>
-  <% end %>
-  <% @friendships.each do |friend| %>
-    <% if friend.friend_id == @user_id %>
-      <% friendship_arr << friend.id %>
-    <% end %>
-  <% end %>
-<% friendee_arr.each do |num| %>
-<%  x = User.find_by(id: num) %>
-<%  x.username %> <br>
-<% end %>
-
-<h2>your ballfriends </h2>
-<% friendship_arr %>
-<% friendship_arr.each do |match| %>
-  <% friendee_arr.each do |matchee| %>
-    <% if match == matchee %>
-      <% matches_arr << match %>
-    <% end %>
-  <% end %>
-<% end %>
-<% matches_arr %>
-<% else %>
-  <%= p "Sign Up to meet Ballerz!" %>
-<% end %>
-<% matches_arr.each do |baller| %>
-  <% @person = User.all.find_by(id: baller) %>
-  <a href="/user/<%= baller %>"><%=@person.username%></a>
-<% end %>
-
-
-  <h2> potential ballfriends </h2>
-  <div class="random_users">
-    <% @users.map do |user|  %>
-      <% if Friendship.find_by(friendee_id: current_user.id, friend_id: user.id ) == nil  %>
-        <div class="add_user_link">
-        <a href="/user/<%= user.id %>"> <%= user.username %> </a> </br>
-        <form id="add_user_form" method="post" action="/addfriend/<%= user.id %>"> <input type="hidden" name="_method" value="post"> <div class="submit"><input type="submit" value="Friend"></div> </br></br></form>
-        </div>
+  <% Friendship.all.each do |friendship| %>
+    <% if friendship.friendee.id == current_user.id %>
+      <% if friendship.friend.id == @page_owner %>
+        <% matches_arr << User.find(friendship) %>
+      <%else %>
+        <% friendee_arr << User.all.find(friendship.friend.id) %>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
+
+
+<h3><font color= #B22A29> Your Friends:</font></h3>
+<% matches_arr.each do |username| %>
+   <a href="/user/<%=username.id%>"> <%=username.username%> </a> <br>
+<% end %> <br><br>
+
+
+<h3> <font color= #B22A29>Potential Friends:</h3></font>
+<% friendee_arr.each do |username| %>
+   <a href="/user/<%=username.id%>"> <%=username.username%> </a> <br>
+<%end %>
+
+
+
+<div class="random_users">
+  <h3> <font color= #B22A29> Find more friends </font>
+  <% @users.map do |user|  %>
+    <% if Friendship.find_by(friendee_id: current_user.id, friend_id: user.id ) == nil  %>
+      <div class="add_user_link">
+        <a href="/user/<%= user.id %>"> <%= user.username %> </a> </br>
+        <form id="add_user_form" method="post" action="/addfriend/<%= user.id %>"> <input type="hidden" name="_method" value="post"> <div class="submit"><input type="submit" value="Friend"></div>
+        </br></br></form>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<% end %>
 </div>
