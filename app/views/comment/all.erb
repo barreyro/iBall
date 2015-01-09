@@ -1,12 +1,8 @@
-
-<% comments.each do |comment| %>
-  <div class="comment_div">
-    <%= comment.sender_id%> said:
-    <%= comment.content %></br>
-    <% if comment.sender_id == current_user.id %>
-      <div class="updateLinks">
-      <%= erb :'/comment/update', locals: {comment: comment}, layout: false %></br>
-      </div></br>
+<div class="comment_div">
+<% Comment.all.each do |usercomment| %>
+  <% if usercomment.receiver_id == page_owner %>
+  <%= usercomment.sender_id %> said:
+  <%= usercomment.content %><br>
   <% end %>
 </div>
 <% end %>
