@@ -9,22 +9,29 @@
     <% if friendship.friendee.id == current_user.id %>
       <% if friendship.friend.id == @page_owner %>
         <% matches_arr << User.find(friendship) %>
-      <%else %>
+      <% else %>
         <% friendee_arr << User.all.find(friendship.friend.id) %>
       <% end %>
     <% end %>
   <% end %>
 
 
+
+
 <h3><font color= #B22A29> Your Friends:</font></h3>
-<% matches_arr.each do |username| %>
-   <a href="/user/<%=username.id%>"> <%=username.username%> </a> <br>
-<% end %> <br><br>
+  <% friendee_arr.each do |friend| %>
+    <% fry = Friendship.find_by(friendee_id: friend.id, friend_id: current_user.id) %>
+    <% if fry %>
+      <% username = User.find(fry.friendee_id) %>
+      <a href="/user/<%=fry.friendee_id%>"> <%=username.username%> </a>
+   <br>
+    <% end %>
+  <% end %>
 
 
 <h3> <font color= #B22A29>Potential Friends:</h3></font>
-<% friendee_arr.each do |username| %>
-   <a href="/user/<%=username.id%>"> <%=username.username%> </a> <br>
+<% friendee_arr.each do |potential_friend| %>
+   <a href="/user/<%=potential_friend.id%>"> <%=potential_friend.username%> </a> <br>
 <%end %>
 
 
