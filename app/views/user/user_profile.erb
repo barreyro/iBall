@@ -15,26 +15,29 @@
     <% end %>
   <% end %>
 
-
-
-
-<h3><font color= #B22A29> Your Friends:</font></h3>
-  <% friendee_arr.each do |friend| %>
-    <% fry = Friendship.find_by(friendee_id: friend.id, friend_id: current_user.id) %>
-    <% if fry %>
-      <% username = User.find(fry.friendee_id) %>
-      <a href="/user/<%=fry.friendee_id%>"> <%=username.username%> </a>
-   <br>
+<div class="your_friends">
+  <h3><font color= #B22A29> Your Friends:</font></h3>
+    <% friendee_arr.each do |friend| %>
+      <% fry = Friendship.find_by(friendee_id: friend.id, friend_id: current_user.id) %>
+      <% if fry %>
+        <% username = User.find(fry.friendee_id) %>
+        <a href="/user/<%=fry.friendee_id%>"> <%=username.username%> </a>
+     <br>
+      <% end %>
     <% end %>
-  <% end %>
+</div>
 
-
-<h3> <font color= #B22A29>Potential Friends:</h3></font>
-<% friendee_arr.each do |potential_friend| %>
-   <a href="/user/<%=potential_friend.id%>"> <%=potential_friend.username%> </a> <br>
-<%end %>
-
-
+<div class="potential_friends">
+  <h3> <font color= #B22A29>Potential Friends:</h3></font>
+  <% friendee_arr.each do |potential_friend| %>
+      <% if Friendship.find_by(friendee_id: potential_friend.id, friend_id: current_user.id) %>
+        <% friendship_arr << potential_friend %>
+      <% else %>
+      <a href="/user/<%=potential_friend.id%>"> <%=potential_friend.username%> </a>
+     <br>
+      <% end %>
+  <%end %>
+</div>
 
 <div class="random_users">
   <h3> <font color= #B22A29> Find more friends </font>
