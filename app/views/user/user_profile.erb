@@ -39,7 +39,7 @@
   <%end %>
 </div>
 
-<div class="random_users">
+<div  class="random_users">
   <h3> <font color= #B22A29> Find more friends </font>
   <% @users.map do |user|  %>
     <% if Friendship.find_by(friendee_id: current_user.id, friend_id: user.id ) == nil  %>
