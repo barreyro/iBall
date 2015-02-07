@@ -38,14 +38,14 @@ $(document).ready(function() {
  $('#comment_block').on('submit', '.comment_form form', function(event) {
     event.preventDefault();
     var $form = $(this);
-    console.log($form);
     $.ajax({
       type: "POST",
       url: $form.attr('action'),
       data: $form.serialize()
     }).done(function(response){
-      console.log(response);
-      $('.userComments').append(response);
+      $('.userComments').add(response, function(){
+        $('.userComments').css('display', 'block');
+      });
     });
   });
 
