@@ -28,7 +28,7 @@
 </div>
 
 <div class="potential_friends">
-  <h3> <font color= #B22A29>Potential Friends:</h3></font>
+  <h3> <font color= #B22A29>Pendng Friends:</h3></font>
   <% friendee_arr.each do |potential_friend| %>
       <% if Friendship.find_by(friendee_id: potential_friend.id, friend_id: current_user.id) %>
         <% friendship_arr << potential_friend %>
