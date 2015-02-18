@@ -52,3 +52,10 @@ h2 {
   color: gray;
 }
 
+.add_randoms {
+  max-height: 200px;
+  max-width: 500px;
+  overflow: scroll;
+  margin-left: 15%;
+  border: 1px solid black;
+}

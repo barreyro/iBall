@@ -2,6 +2,7 @@
 <% if current_user %>
 <br><Br>
   <% @user_id = session[:user_id] %>
+  <% find_friends = [] %>
   <% friendee_arr = [] %>
   <% friendship_arr = [] %>
   <% matches_arr = [] %>
@@ -40,16 +41,22 @@
 </div>
 
 <div  class="random_users">
-  <h3> <font color= #B22A29> Find more friends </font>
+
+  <h3> <font color= #B22A29> Find more friends: </font><br>
+    <div class="add_randoms">
   <% @users.map do |user|  %>
     <% if Friendship.find_by(friendee_id: current_user.id, friend_id: user.id ) == nil  %>
+      <% find_friends << user %>
+    <% end %>
+  <% end %>
+  <% find_friends.map do |each_friend| %>
       <div class="add_user_link">
-        <a href="/user/<%= user.id %>"> <%= user.username %> </a> </br>
-        <form id="add_user_form" method="post" action="/addfriend/<%= user.id %>"> <input type="hidden" name="_method" value="post"> <div class="submit"><input type="submit" value="Friend"></div>
+        <a href="/user/<%= each_friend.id %>"> <%= each_friend.username %> </a> </br>
+        <form id="add_user_form" method="post" action="/addfriend/<%= each_friend.id %>"> <input type="hidden" name="_method" value="post"> <div class="submit"><input type="submit" value="Friend"></div>
         </br></br></form>
       </div>
-    <% end %>
   <% end %>
 </div>
 <% end %>
+</div>
 </div>
